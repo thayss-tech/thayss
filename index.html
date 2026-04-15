@@ -4,10 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>🌹 Nuestro refugio · Cristhian & Thayss</title>
-
-  <!-- ❤️ FAVICON CORAZÓN -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23ff69b4' d='M50 85 L15 50 Q0 35 0 20 Q0 5 15 5 Q30 5 50 25 Q70 5 85 5 Q100 5 100 20 Q100 35 85 50 Z'/%3E%3Csvg%3E?v=2">
-  
+  <!-- Favicon corazón -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23ff69b4' d='M50 85 L15 50 Q0 35 0 20 Q0 5 15 5 Q30 5 50 25 Q70 5 85 5 Q100 5 100 20 Q100 35 85 50 Z'/%3E%3Csvg%3E">
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +13,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       font-family: 'Quicksand', sans-serif;
       background: #fff0f5;
@@ -24,8 +21,6 @@
       scroll-behavior: smooth;
       overflow-x: hidden;
     }
-
-    /* Corazones flotantes */
     .floating-hearts {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       pointer-events: none; z-index: 0; opacity: 0.3;
@@ -39,8 +34,6 @@
       50% { opacity: 0.5; }
       100% { transform: translateY(-20vh) rotate(20deg); opacity: 0; }
     }
-
-    /* Contenido principal */
     #mainContent {
       display: none; position: relative; z-index: 5; max-width: 1300px; margin: 0 auto;
       padding: 1.5rem 2rem 4rem; background: rgba(255, 255, 255, 0.65);
@@ -48,8 +41,6 @@
       border-radius: 48px 48px 24px 24px;
       box-shadow: 0 20px 50px rgba(255, 105, 180, 0.15); border: 1px solid #ffe4ec;
     }
-
-    /* LOGIN */
     #loginOverlay {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background: #ffe4ec; background-image: radial-gradient(circle at 20% 30%, #fff0f5 0%, #ffd9e5 100%);
@@ -62,25 +53,21 @@
       box-shadow: 0 35px 45px rgba(210, 80, 120, 0.2); max-width: 430px; width: 90%;
       text-align: center; border: 1px solid #ffb6c1;
     }
-    .login-logo { font-size: 4.5rem; color: #ff69b4; margin-bottom: 0.2rem; filter: drop-shadow(0 6px 8px #ffb6c1); }
-    .login-card h2 { font-family: 'Dancing Script', cursive; font-size: 2.6rem; color: #b3406c; margin: 0.5rem 0 0.2rem; line-height: 1.2; }
+    .login-logo { font-size: 4.5rem; color: #ff69b4; margin-bottom: 0.2rem; }
+    .login-card h2 { font-family: 'Dancing Script', cursive; font-size: 2.6rem; color: #b3406c; }
     .login-message { font-size: 1.2rem; margin: 0.8rem 0 1.8rem; color: #7a4b5c; }
-    .login-input { width: 100%; padding: 15px 20px; margin: 10px 0; border: 2px solid #ffb6c1; border-radius: 60px; font-size: 1.1rem; background: white; outline: none; }
-    .login-input:focus { border-color: #ff69b4; box-shadow: 0 0 0 4px rgba(255,105,180,0.2); }
-    .login-btn { background: #ff69b4; color: white; border: none; padding: 15px 28px; font-size: 1.3rem; border-radius: 60px; width: 100%; font-weight: 600; cursor: pointer; margin-top: 25px; box-shadow: 0 8px 14px #ffb6c1; }
+    .login-input { width: 100%; padding: 15px 20px; margin: 10px 0; border: 2px solid #ffb6c1; border-radius: 60px; }
+    .login-btn { background: #ff69b4; color: white; padding: 15px 28px; border-radius: 60px; width: 100%; font-weight: 600; cursor: pointer; margin-top: 25px; border: none; }
     .error-msg { color: #c0396b; margin-top: 15px; }
 
     h1, h2, h3 { font-family: 'Dancing Script', cursive; font-weight: 600; }
     h2 { font-size: 2.8rem; color: #a13e62; margin: 2.8rem 0 1.5rem; border-left: 8px solid #ff69b4; padding-left: 1.8rem; }
-
-    section { margin-bottom: 4rem; position: relative; z-index: 2; }
-
+    section { margin-bottom: 4rem; }
     .fade-section { opacity: 0; transform: translateY(24px); transition: opacity 0.8s ease, transform 0.8s ease; }
     .fade-section.visible { opacity: 1; transform: translateY(0); }
-
     .intro-text { font-size: 2.2rem; font-family: 'Dancing Script', cursive; text-align: center; padding: 3rem 1rem; background: rgba(255,228,236,0.5); border-radius: 80px 20px; margin: 2rem 0; }
 
-    /* Carruseles de fotos */
+    /* Carruseles */
     .carousel-section { margin: 2.5rem 0; }
     .carousel-title { font-size: 1.8rem; margin: 0 0 1rem 0.5rem; color: #b3406c; display: flex; align-items: center; gap: 8px; }
     .carousel-container { display: flex; overflow-x: auto; gap: 15px; padding: 10px 5px 20px; scroll-snap-type: x mandatory; }
@@ -90,27 +77,31 @@
     .carousel-item:hover { transform: scale(1.02); }
     .carousel-item img { width: 100%; height: 200px; object-fit: cover; display: block; cursor: pointer; }
 
-    /* Videos grid */
+    /* Videos locales */
     .videos-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; }
-    .video-card { background: #ffe4ec; border-radius: 24px; padding: 1rem; box-shadow: 0 8px 12px rgba(0,0,0,0.05); }
+    .video-card { background: #ffe4ec; border-radius: 24px; padding: 1rem; }
     .video-card video { width: 100%; border-radius: 16px; background: #000; }
 
-    /* YouTube cards */
-    .yt-card { background: #fff0f5; border-radius: 30px; padding: 1rem; text-align: center; border: 2px dashed #ffb6c1; }
+    /* Tarjetas YouTube clickeables */
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.5rem; }
+    .yt-card {
+      background: #fff0f5; border-radius: 30px; padding: 1rem; text-align: center;
+      border: 2px dashed #ffb6c1; cursor: pointer; transition: 0.2s;
+    }
+    .yt-card:hover { transform: scale(1.02); background: #ffe4ec; }
     .yt-thumb { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 20px; margin-bottom: 8px; background: #ddd; }
-    .yt-link { display: inline-block; margin-top: 8px; color: #ff69b4; text-decoration: none; font-weight: 500; }
+    .yt-player { margin-top: 10px; }
+    iframe { width: 100%; aspect-ratio: 16/9; border-radius: 20px; border: none; }
 
-    /* Línea de tiempo alternada */
+    /* Timeline alternada */
     .timeline-alt { position: relative; max-width: 900px; margin: 40px auto; }
     .timeline-alt::after { content: ''; position: absolute; width: 3px; background: #ff69b4; top: 0; bottom: 0; left: 50%; transform: translateX(-50%); }
     .tl-container { padding: 15px 40px; position: relative; width: 50%; }
-    .tl-left { left: 0; }
-    .tl-right { left: 50%; }
+    .tl-left { left: 0; } .tl-right { left: 50%; }
     .tl-content { padding: 20px 25px; background: white; border-radius: 20px; box-shadow: 0 5px 15px rgba(255,105,180,0.2); }
     .tl-container::after { content: '❤️'; position: absolute; width: 32px; height: 32px; right: -16px; background: white; top: 20px; border-radius: 50%; z-index: 1; display: flex; align-items: center; justify-content: center; font-size: 16px; border: 2px solid #ff69b4; }
     .tl-right::after { left: -16px; }
     .tl-date { font-weight: 700; color: #b32e5e; font-size: 1.4rem; font-family: 'Dancing Script', cursive; }
-    .tl-desc { margin-top: 6px; }
 
     @media screen and (max-width: 700px) {
       .timeline-alt::after { left: 30px; }
@@ -121,9 +112,13 @@
 
     .nav-dots { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 25px 0; }
     .nav-dots a { color: #a13e62; background: #ffe4ec; padding: 8px 16px; border-radius: 40px; text-decoration: none; }
-
-    .play-btn { background: #ff69b4; color: white; border: none; width: 64px; height: 64px; border-radius: 50%; font-size: 2rem; cursor: pointer; box-shadow: 0 8px 0 #b34e7a; }
     .audio-player { background: #ffe4ec; border-radius: 60px; padding: 1.5rem; display: flex; align-items: center; gap: 20px; }
+    .play-btn { background: #ff69b4; color: white; border: none; width: 64px; height: 64px; border-radius: 50%; font-size: 2rem; cursor: pointer; box-shadow: 0 8px 0 #b34e7a; }
+    .zara-section { background: #fce4ec; border-radius: 48px; padding: 2rem; }
+    .final-message { font-size: 2.8rem; text-align: center; }
+    .lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; z-index: 10000; }
+    .lightbox img { max-width: 90%; max-height: 85vh; border-radius: 32px; border: 4px solid white; }
+    .lightbox-close { position: absolute; top: 30px; right: 40px; font-size: 3rem; color: white; cursor: pointer; }
   </style>
 </head>
 <body>
@@ -144,7 +139,7 @@
   </div>
 </div>
 
-<!-- MAIN -->
+<!-- MAIN CONTENT -->
 <div id="mainContent">
   <div style="text-align: center; font-size: 3.5rem; color: #ff69b4;">❤️</div>
   <div class="nav-dots">
@@ -155,7 +150,6 @@
     <a href="#zara">👶 Zara</a> <a href="#recordatorio">🔐 Recordatorio</a> <a href="#final">🏡 Final</a>
   </div>
 
-  <!-- INTRO -->
   <section id="intro" class="fade-section">
     <div class="intro-text"><span>Bienvenida al lugar donde guarda todo nuestro amor…</span></div>
     <div style="text-align:center;">
@@ -163,77 +157,65 @@
     </div>
   </section>
 
-  <!-- HISTORIA -->
   <section id="historia" class="fade-section">
     <h2>📖 Cómo empezó todo</h2>
     <div style="background: #fff0f5; border-radius: 30px; padding: 2rem;">
       <p style="font-size:1.5rem; font-family:'Dancing Script';">✨ Primer encuentro · 3 abril 2024, 7:23 pm</p><p>El universo nos juntó...</p>
-      <p style="font-size:1.5rem; font-family:'Dancing Script'; margin-top:1.5rem;">🌿 Segundo encuentro · 6 mayo 2024, 5:40 pm</p><p>Ese día supe que no podía dejar de verte.</p>
-      <p style="font-size:1.5rem; font-family:'Dancing Script'; margin-top:1.5rem;">🤝 Primer contacto · tomarnos de la mano</p><p>Sentí que el tiempo se detuvo.</p>
+      <p style="font-size:1.5rem; font-family:'Dancing Script';">🌿 Segundo encuentro · 6 mayo 2024, 5:40 pm</p><p>Ese día supe que no podía dejar de verte.</p>
+      <p style="font-size:1.5rem; font-family:'Dancing Script';">🤝 Primer contacto · tomarnos de la mano</p><p>Sentí que el tiempo se detuvo.</p>
     </div>
   </section>
 
-  <!-- GALERÍA DE FOTOS (10 carruseles) -->
   <section id="galeria" class="fade-section">
     <h2>📸 Galería de fotos</h2>
     <div id="photoCarousels"></div>
   </section>
 
-  <!-- LIGHTBOX -->
   <div class="lightbox" id="lightbox"><span class="lightbox-close" id="lightboxClose">&times;</span><img id="lightboxImg" src=""></div>
 
-  <!-- CARTAS -->
   <section id="cartas" class="fade-section"><h2>💌 Cartas que nunca te envié</h2>
     <div class="letters-container" style="display:flex; gap:20px; flex-wrap:wrap; justify-content:center;">
-      <div class="envelope"><i class="fas fa-envelope-open-text"></i><div class="letter-content">“A veces escribo lo que no digo… Te amo en silencio, pero infinito.”</div></div>
-      <div class="envelope"><i class="fas fa-envelope-open-text"></i><div class="letter-content">“Hoy soñé que estabas aquí y no quería despertar.”</div></div>
-      <div class="envelope"><i class="fas fa-envelope-open-text"></i><div class="letter-content">“Cada kilómetro duele, pero vale la pena porque eres tú.”</div></div>
+      <div class="envelope" style="background:#ffe4ec; padding:1.5rem; border-radius:20px; cursor:pointer;" onclick="this.classList.toggle('open')"><i class="fas fa-envelope-open-text"></i><div class="letter-content">“A veces escribo lo que no digo… Te amo en silencio, pero infinito.”</div></div>
+      <div class="envelope" style="background:#ffe4ec; padding:1.5rem; border-radius:20px; cursor:pointer;" onclick="this.classList.toggle('open')"><i class="fas fa-envelope-open-text"></i><div class="letter-content">“Hoy soñé que estabas aquí y no quería despertar.”</div></div>
+      <div class="envelope" style="background:#ffe4ec; padding:1.5rem; border-radius:20px; cursor:pointer;" onclick="this.classList.toggle('open')"><i class="fas fa-envelope-open-text"></i><div class="letter-content">“Cada kilómetro duele, pero vale la pena porque eres tú.”</div></div>
     </div>
   </section>
 
-  <!-- AUDIO OCULTO -->
   <section class="fade-section"><h2>🎧 Audio oculto</h2>
     <div class="audio-player"><button id="customPlayBtn" class="play-btn"><i class="fas fa-play"></i></button><span>Si llegaste hasta aquí… escúchame 💕</span><span id="audioStatus">🎵 listo</span></div>
   </section>
 
-  <!-- TIMELINE ALTERNADA -->
   <section id="timeline" class="fade-section"><h2>⏳ Nuestra línea de tiempo</h2><div class="timeline-alt" id="timelineAlt"></div></section>
 
-  <!-- VIDEOS QUE TE HICE -->
   <section id="videos" class="fade-section"><h2>🎥 Videos que te hice</h2><div class="videos-grid" id="videosGrid"></div></section>
 
-  <!-- POEMAS -->
   <section id="poemas" class="fade-section"><h2>✍️ Cartas y poemas</h2><div style="display:flex; flex-direction:column; gap:15px;"><div style="background:#ffe4ec; border-radius:30px; padding:20px;">🌹 “Eres el verso que nunca termina...”</div><div style="background:#ffe4ec; border-radius:30px; padding:20px;">📜 “Te prometo amor con tinta indeleble.”</div></div></section>
 
-  <!-- PELÍCULAS FAVORITAS (YouTube) -->
+  <!-- PELÍCULAS (YouTube clickeable) -->
   <section id="peliculas" class="fade-section"><h2>🎬 Nuestras películas favoritas</h2><div class="card-grid" id="peliculasGrid"></div></section>
 
-  <!-- LUGARES QUE AMAMOS (con imagen) -->
+  <!-- LUGARES con imagen -->
   <section id="lugares" class="fade-section"><h2>📍 Lugares que amamos</h2><div class="card-grid" id="lugaresGrid"></div></section>
 
-  <!-- SUEÑOS -->
   <section id="suenos" class="fade-section"><h2>🌈 Nuestros sueños a futuro</h2><p style="background: #ffe4ec; padding: 1.8rem; border-radius: 40px;">Viajar por el mundo, construir nuestro hogar, despertar juntos cada día, y envejecer de la mano.</p></section>
 
-  <!-- CANCIONES (YouTube) -->
+  <!-- CANCIONES (YouTube clickeable) -->
   <section id="canciones" class="fade-section"><h2>🎵 Nuestras canciones favoritas</h2><div class="card-grid" id="cancionesGrid"></div></section>
 
-  <!-- TUTORIAL (YouTube) -->
-  <section id="tutorial" class="fade-section"><h2>📺 Tutoriales para no pelear</h2><div id="tutorialContainer" style="background:#f9e0e8; border-radius: 30px; padding:20px;"></div></section>
+  <!-- TUTORIAL (YouTube clickeable) -->
+  <section id="tutorial" class="fade-section"><h2>📺 Tutoriales para no pelear</h2><div id="tutorialContainer"></div></section>
 
-  <!-- ZARA -->
-  <section id="zara" class="fade-section"><h2>👶 Para nuestra futura hija Zara</h2><div class="zara-section" style="background:#fce4ec; border-radius:48px; padding:2rem;">Zara, aún no has llegado, pero ya te amamos con locura.</div></section>
+  <section id="zara" class="fade-section"><h2>👶 Para nuestra futura hija Zara</h2><div class="zara-section">Zara, aún no has llegado, pero ya te amamos con locura. Serás la mezcla perfecta de nosotros dos.</div></section>
 
-  <!-- RECORDATORIO -->
   <section id="recordatorio" class="fade-section"><h2>🔐 Recordatorio: nunca abandonemos</h2><p style="font-size:1.4rem; background:#ffb6c1; padding:25px; border-radius:50px;">Esto es para siempre. Prometo cuidarnos, escucharnos y elegirnos cada día.</p></section>
 
-  <!-- FINAL -->
-  <section id="final" class="fade-section"><div class="final-message" style="font-size:2.8rem;">Algún día no habrá distancia… solo hogar 🏡</div><div style="text-align:right; font-size:1.8rem;">Siempre vuelvo a ti,<br>— Cristhian</div></section>
+  <section id="final" class="fade-section"><div class="final-message">Algún día no habrá distancia… solo hogar 🏡</div><div style="text-align:right; font-size:1.8rem;">Siempre vuelvo a ti,<br>— Cristhian</div></section>
   <div style="text-align:center; margin-top:30px;">❤️ Cristhian & Thayss · infinito</div>
 </div>
 
 <script>
   (function(){
-    // Login
+    // ----- LOGIN -----
     const overlay = document.getElementById('loginOverlay');
     const main = document.getElementById('mainContent');
     const userInp = document.getElementById('usernameInput');
@@ -249,22 +231,21 @@
     passInp.addEventListener('keypress', e => e.key==='Enter' && checkLogin());
     userInp.addEventListener('keypress', e => e.key==='Enter' && checkLogin());
 
-    // corazones
+    // corazones flotantes
     const heartsC = document.getElementById('heartsContainer');
     for(let i=0;i<22;i++){ let h=document.createElement('div'); h.className='heart-float'; h.innerHTML=['❤️','🌸','✨','💕'][i%4]; h.style.left=Math.random()*100+'%'; h.style.animationDelay=Math.random()*10+'s'; heartsC.appendChild(h); }
 
-    // 10 carruseles de fotos (temas)
+    // 10 carruseles de fotos
     const temas = ['Primer año','Viajes','Citas','Risas','Abrazos','Miradas','Besos','Locuras','Sueños','Nuestro día'];
     const carouselsDiv = document.getElementById('photoCarousels');
     temas.forEach(tema => {
       const sec = document.createElement('div'); sec.className = 'carousel-section';
       sec.innerHTML = `<div class="carousel-title"><i class="fas fa-heart" style="color:#ff69b4;"></i> ${tema}</div>`;
       const cont = document.createElement('div'); cont.className = 'carousel-container';
-      // Imágenes de ejemplo (cámbialas por images/tu-foto.png)
       for(let i=1;i<=6;i++) {
         const item = document.createElement('div'); item.className = 'carousel-item';
         const img = document.createElement('img');
-        img.src = `images/${tema.toLowerCase().replace(/ /g,'')}${i}.png`; // ejemplo: images/primerano1.png
+        img.src = `images/${tema.toLowerCase().replace(/ /g,'')}${i}.png`;
         img.alt = tema;
         img.onerror = () => img.src = 'https://picsum.photos/200/200?random='+Math.random();
         img.addEventListener('click', () => { lightbox.style.display='flex'; lightboxImg.src = img.src; });
@@ -273,24 +254,21 @@
       sec.appendChild(cont); carouselsDiv.appendChild(sec);
     });
 
-    // Videos desde videos/
+    // Lightbox
+    const lightbox = document.getElementById('lightbox'), lightboxImg = document.getElementById('lightboxImg');
+    document.getElementById('lightboxClose').onclick = () => lightbox.style.display='none';
+    lightbox.onclick = e => { if(e.target===lightbox) lightbox.style.display='none'; };
+
+    // Videos locales desde carpeta videos/
     const videosGrid = document.getElementById('videosGrid');
-    const videoFiles = ['recuerdo1.mp4','mensaje.mp4','viaje.mp4']; // cambia por tus archivos
+    const videoFiles = ['recuerdo1.mp4','mensaje.mp4','viaje.mp4'];
     videoFiles.forEach(file => {
       const card = document.createElement('div'); card.className = 'video-card';
       card.innerHTML = `<video controls src="videos/${file}"></video><p style="margin-top:8px;">${file}</p>`;
       videosGrid.appendChild(card);
     });
 
-    // Lightbox
-    const lightbox = document.getElementById('lightbox'), lightboxImg = document.getElementById('lightboxImg');
-    document.getElementById('lightboxClose').onclick = () => lightbox.style.display='none';
-    lightbox.onclick = e => { if(e.target===lightbox) lightbox.style.display='none'; };
-
-    // Sobres
-    document.querySelectorAll('.envelope').forEach(e => e.addEventListener('click', function(){ this.classList.toggle('open'); }));
-
-    // Timeline alternada
+    // ----- TIMELINE ALTERNADA -----
     const events = [
       { date: '03/04/2024 19:23', desc: '✨ Nos conocimos · el universo conspiró' },
       { date: '06/05/2024 17:40', desc: '🌿 Nos vimos de nuevo, y supe que era real' },
@@ -312,26 +290,43 @@
       tl.appendChild(cont);
     });
 
-    // YouTube para películas, canciones, tutorial
-    function addYouTubeCard(container, title, youtubeUrl) {
+    // ----- FUNCIÓN PARA TARJETAS YOUTUBE CON CLICK PARA REPRODUCIR EN SITIO -----
+    function createYouTubeCard(title, youtubeUrl) {
       const videoId = youtubeUrl.split('v=')[1]?.split('&')[0] || '';
+      if(!videoId) return document.createElement('div');
+      const card = document.createElement('div');
+      card.className = 'yt-card';
       const thumb = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-      const card = document.createElement('div'); card.className = 'favorite-card';
-      card.innerHTML = `<img src="${thumb}" class="yt-thumb" alt="${title}"><strong>${title}</strong><br><a href="${youtubeUrl}" target="_blank" class="yt-link">▶ Ver trailer</a>`;
-      container.appendChild(card);
+      card.innerHTML = `<img src="${thumb}" class="yt-thumb" alt="${title}"><strong>${title}</strong>`;
+      let playerInserted = false;
+      card.addEventListener('click', function(e) {
+        if(playerInserted) return;
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+        iframe.allowFullscreen = true;
+        iframe.style.marginTop = '10px';
+        card.appendChild(iframe);
+        playerInserted = true;
+      });
+      return card;
     }
+
     // Películas
     const peliGrid = document.getElementById('peliculasGrid');
-    addYouTubeCard(peliGrid, 'Diario de una pasión', 'https://www.youtube.com/watch?v=example1');
-    addYouTubeCard(peliGrid, 'La La Land', 'https://www.youtube.com/watch?v=example2');
+    peliGrid.appendChild(createYouTubeCard('Diario de una pasión', 'https://www.youtube.com/watch?v=XXXXX')); // Cambia URL
+    peliGrid.appendChild(createYouTubeCard('La La Land', 'https://www.youtube.com/watch?v=XXXXX'));
+
     // Canciones
     const cancionesGrid = document.getElementById('cancionesGrid');
-    addYouTubeCard(cancionesGrid, 'Perfect - Ed Sheeran', 'https://www.youtube.com/watch?v=2Vv-BfVoq4g');
-    addYouTubeCard(cancionesGrid, 'Amor eterno', 'https://www.youtube.com/watch?v=example');
+    cancionesGrid.appendChild(createYouTubeCard('Perfect - Ed Sheeran', 'https://www.youtube.com/watch?v=2Vv-BfVoq4g'));
+    cancionesGrid.appendChild(createYouTubeCard('Amor eterno', 'https://www.youtube.com/watch?v=XXXXX'));
+
     // Tutorial
     const tutCont = document.getElementById('tutorialContainer');
     tutCont.innerHTML = `<p><i class="fas fa-play-circle"></i> “5 lenguajes del amor”</p>`;
-    addYouTubeCard(tutCont, 'Los 5 lenguajes del amor', 'https://www.youtube.com/watch?v=example');
+    const tutCard = createYouTubeCard('Los 5 lenguajes del amor', 'https://www.youtube.com/watch?v=XXXXX');
+    tutCont.appendChild(tutCard);
 
     // Lugares con imagen
     const lugares = [
@@ -342,15 +337,15 @@
     const lugGrid = document.getElementById('lugaresGrid');
     lugares.forEach(l => {
       const card = document.createElement('div'); card.className = 'favorite-card';
-      card.innerHTML = `<img src="${l.img}" style="width:100%; border-radius:20px; height:120px; object-fit:cover;" onerror="this.src='https://picsum.photos/200/120?random'"><p>${l.nombre}</p>`;
+      card.style.background = '#fff0f5'; card.style.padding = '1rem'; card.style.borderRadius = '30px';
+      card.innerHTML = `<img src="${l.img}" style="width:100%; border-radius:20px; height:140px; object-fit:cover;" onerror="this.src='https://picsum.photos/200/140?random'"><p style="margin-top:8px;">${l.nombre}</p>`;
       lugGrid.appendChild(card);
     });
 
-    // Audio / música
+    // Audio y música de fondo
     let audioCtx=null, isPlaying=false;
     const playBtn = document.getElementById('customPlayBtn'), statusSpan = document.getElementById('audioStatus');
-    function playMelody(ctx){ /* igual que antes, omitido por brevedad */ }
-    playBtn.onclick = async () => { /* ... lógica similar ... */ };
+    playBtn.onclick = async () => { /* simplificado */ };
     const musicaFondo = new Audio('musica/fondo-romantico.mp3'); musicaFondo.loop = true;
     let fondoPlaying = false;
     document.getElementById('musicToggle').onclick = () => {
@@ -359,7 +354,7 @@
       fondoPlaying = !fondoPlaying;
     };
 
-    // Fade scroll, smooth nav, etc (resumido)
+    // Fade scroll + navegación suave
     const observer = new IntersectionObserver((e) => e.forEach(en => { if(en.isIntersecting) en.target.classList.add('visible'); }), {threshold:0.15});
     document.querySelectorAll('.fade-section').forEach(s => observer.observe(s));
     document.querySelectorAll('.nav-dots a').forEach(a => a.addEventListener('click', e => {
