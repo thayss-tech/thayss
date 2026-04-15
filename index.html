@@ -85,19 +85,13 @@
     }
     .yt-card:hover { transform: scale(1.02); background: #ffe4ec; }
     .yt-thumb { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 20px; margin-bottom: 8px; background: #ddd; }
-    .yt-player { margin-top: 10px; }
     iframe { width: 100%; aspect-ratio: 16/9; border-radius: 20px; border: none; }
 
-    .envelope {
-      background: #ffe4ec; padding: 1.5rem; border-radius: 20px; cursor: pointer;
-      border: 2px solid #ffb6c1; width: 220px; text-align: center;
+    .poema-card {
+      background: #fff0f5; border-radius: 30px; padding: 2rem;
+      border: 2px dashed #ff69b4; font-size: 1.3rem; line-height: 1.8;
+      box-shadow: 0 8px 0 #e6b0c2;
     }
-    .envelope i { font-size: 2.5rem; color: #c95f8b; }
-    .letter-content {
-      max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
-      margin-top: 10px; font-style: italic; color: #5e3a48;
-    }
-    .envelope.open .letter-content { max-height: 200px; }
 
     .timeline-alt { position: relative; max-width: 900px; margin: 40px auto; }
     .timeline-alt::after { content: ''; position: absolute; width: 3px; background: #ff69b4; top: 0; bottom: 0; left: 50%; transform: translateX(-50%); }
@@ -119,10 +113,10 @@
     .nav-dots a { color: #a13e62; background: #ffe4ec; padding: 8px 16px; border-radius: 40px; text-decoration: none; }
     .audio-player { background: #ffe4ec; border-radius: 60px; padding: 1.5rem; display: flex; align-items: center; gap: 20px; }
     .play-btn { background: #ff69b4; color: white; border: none; width: 64px; height: 64px; border-radius: 50%; font-size: 2rem; cursor: pointer; box-shadow: 0 8px 0 #b34e7a; }
-    .zara-section { background: #fce4ec; border-radius: 48px; padding: 2rem; }
+    .zara-section { background: #fce4ec; border-radius: 48px; padding: 2rem; font-size: 1.3rem; }
     .final-message { font-size: 2.8rem; text-align: center; }
 
-    /* Lightbox corregido */
+    /* Lightbox mejorado */
     .lightbox {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(0,0,0,0.95); backdrop-filter: blur(12px);
@@ -130,9 +124,9 @@
       z-index: 100000; cursor: zoom-out;
     }
     .lightbox img {
-      max-width: 95%; max-height: 95vh; width: auto; height: auto;
-      object-fit: contain; border-radius: 20px;
-      box-shadow: 0 0 60px rgba(255,105,180,0.6); border: 3px solid white;
+      max-width: 95%; max-height: 95vh; object-fit: contain;
+      border-radius: 20px; box-shadow: 0 0 60px rgba(255,105,180,0.6);
+      border: 3px solid white; cursor: default;
     }
     .lightbox-close {
       position: absolute; top: 25px; right: 40px; font-size: 4rem;
@@ -140,8 +134,10 @@
     }
     .lightbox-close:hover { opacity: 1; transform: scale(1.2); }
 
-    .video-card iframe {
-      aspect-ratio: 16 / 9; height: auto; border: none;
+    .video-card iframe { aspect-ratio: 16 / 9; height: auto; border: none; }
+
+    .pdf-duo {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;
     }
     .pdf-container {
       background: #fff0f5; border-radius: 30px; padding: 1.5rem; text-align: center;
@@ -151,6 +147,9 @@
       border-radius: 40px; font-size: 1.1rem; margin-top: 15px; cursor: pointer;
       box-shadow: 0 4px 0 #b34e7a; transition: 0.1s;
     }
+    .pdf-fullscreen-btn:active { transform: translateY(4px); box-shadow: none; }
+
+    @media (max-width: 700px) { .pdf-duo { grid-template-columns: 1fr; } }
   </style>
 </head>
 <body>
@@ -176,9 +175,9 @@
   <div style="text-align: center; font-size: 3.5rem; color: #ff69b4;">❤️</div>
   <div class="nav-dots">
     <a href="#intro">✨ Inicio</a> <a href="#historia">📖 Historia</a> <a href="#galeria">📸 Fotos</a>
-    <a href="#cartas">💌 Cartas</a> <a href="#timeline">⏳ Timeline</a> <a href="#videos">🎥 Videos</a>
-    <a href="#poemas">✍️ Poemas</a> <a href="#peliculas">🎬 Películas</a> <a href="#lugares">📍 Lugares</a>
-    <a href="#pdf">📄 PDF</a> <a href="#suenos">🌈 Sueños</a> <a href="#canciones">🎵 Canciones</a>
+    <a href="#poemas">✍️ Poemas</a> <a href="#timeline">⏳ Timeline</a> <a href="#videos">🎥 Videos</a>
+    <a href="#peliculas">🎬 Películas</a> <a href="#lugares">📍 Lugares</a>
+    <a href="#pdfs">📄 PDFs</a> <a href="#suenos">🌈 Sueños</a> <a href="#canciones">🎵 Canciones</a>
     <a href="#tutorial">📺 Tutorial</a> <a href="#zara">👶 Zara</a> <a href="#recordatorio">🔐 Recordatorio</a> <a href="#final">🏡 Final</a>
   </div>
 
@@ -209,19 +208,13 @@
     <img id="lightboxImg" src="" alt="Vista ampliada">
   </div>
 
-  <section id="cartas" class="fade-section"><h2>💌 Poemas</h2>
-    <div class="letters-container" style="display:flex; gap:20px; flex-wrap:wrap; justify-content:center;">
-      <div class="envelope" onclick="this.classList.toggle('open')"><i class="fas fa-envelope-open-text"></i><div class="letter-content">“TE QUIERO 
-Te quiero…
-Te quiero así, en todas y cada una de tus versiones: con todos tus tornillos y sin uno de ellos, con tus lagrimas y tus risas, con tus logros y fracasos…
-Te quiero así, incontrolable por haber tenido un mal día, porque solo sé que lo único que hace falta son unos buenos tacos y muchos abrazos…
-Y es que sé que no todo va a ser perfecto, pero no pretendo que lo sea. Porque cuando te miro me pregunto: ¡qué mas puedo pedir si contigo encontré el hoy al final del arcoíris, carajo!
-Por eso te quiero así, así tal cuál te conocí…” </div></div>
-      <div class="envelope" onclick="this.classList.toggle('open')"><i class="fas fa-envelope-open-text"></i><div class="letter-content">“Hola, mi vida. Mely, mi niña...
-Y aquí estamos, después de 208 días desde nuestra primera cita. Gracias, mi vida.
-Gracias por aceptar a mí y a mis excentricidades. Gracias, porque un poquito de ti es mucho de todo. Gracias por creer en mí cuando nadie más lo hizo. Gracias por decirme qué tomar y por curar mis heridas. Gracias por no calmar mis tormentas, sino por desatarlas. Gracias por hacerme reír. Gracias por soportar mi locura. Gracias por navegar mi temperamento. Gracias por enamorarte de mí sin cambiar nada.
-.”</div></div>
-      <div class="envelope" onclick="this.classList.toggle('open')"><i class="fas fa-envelope-open-text"></i><div class="letter-content">“Una vez te dije que nos juntáramos a las 4, la excusa fue el mate. Me dijiste a las 5, llegaste 20 minutos tarde. Sí, te hablo a ti, la que en nuestra primera cita vino nada abrigada pese a ser invierno. La que a veces me dice "Daaaahhh" cuando digo algunas cosas, la que a veces me saca la lengua de la nada..”</div></div>
+  <!-- POEMAS (sección única, texto grande) -->
+  <section id="poemas" class="fade-section">
+    <h2>✍️ Poemas para ti</h2>
+    <div style="display:flex; flex-direction:column; gap:25px;">
+      <div class="poema-card">🌹 “TE QUIERO<br>Te quiero así, en todas y cada una de tus versiones: con todos tus tornillos y sin uno de ellos, con tus lágrimas y tus risas, con tus logros y fracasos… Te quiero así, incontrolable por haber tenido un mal día, porque solo sé que lo único que hace falta son unos buenos tacos y muchos abrazos… Y es que sé que no todo va a ser perfecto, pero no pretendo que lo sea. Porque cuando te miro me pregunto: ¡qué más puedo pedir si contigo encontré el hoy al final del arcoíris, carajo! Por eso te quiero así, así tal cual te conocí…”</div>
+      <div class="poema-card">📜 “Hola, mi vida. Mely, mi niña... Y aquí estamos, después de 208 días desde nuestra primera cita. Gracias, mi vida. Gracias por aceptar a mí y a mis excentricidades. Gracias, porque un poquito de ti es mucho de todo. Gracias por creer en mí cuando nadie más lo hizo. Gracias por decirme qué tomar y por curar mis heridas. Gracias por no calmar mis tormentas, sino por desatarlas. Gracias por hacerme reír. Gracias por soportar mi locura. Gracias por navegar mi temperamento. Gracias por enamorarte de mí sin cambiar nada.”</div>
+      <div class="poema-card">💌 “Una vez te dije que nos juntáramos a las 4, la excusa fue el mate. Me dijiste a las 5, llegaste 20 minutos tarde. Sí, te hablo a ti, la que en nuestra primera cita vino nada abrigada pese a ser invierno. La que a veces me dice 'Daaaahhh' cuando digo algunas cosas, la que a veces me saca la lengua de la nada…”</div>
     </div>
   </section>
 
@@ -233,30 +226,40 @@ Gracias por aceptar a mí y a mis excentricidades. Gracias, porque un poquito de
 
   <section id="videos" class="fade-section"><h2>🎥 Videos que te hice</h2><div class="videos-grid" id="videosGrid"></div></section>
 
-  <section id="poemas" class="fade-section"><h2>✍️ Cartas y poemas</h2><div style="display:flex; flex-direction:column; gap:15px;"><div style="background:#ffe4ec; border-radius:30px; padding:20px;">🌹 “Eres el verso que nunca termina...”</div><div style="background:#ffe4ec; border-radius:30px; padding:20px;">📜 “Te prometo amor con tinta indeleble.”</div></div></section>
-
   <section id="peliculas" class="fade-section"><h2>🎬 Nuestras películas favoritas</h2><div class="card-grid" id="peliculasGrid"></div></section>
 
   <section id="lugares" class="fade-section"><h2>📍 Lugares que amamos</h2><div class="card-grid" id="lugaresGrid"></div></section>
 
-  <!-- PDF -->
-  <section id="pdf" class="fade-section">
-    <h2>📄 Nuestro documento especial</h2>
-    <div class="pdf-container">
-      <iframe src="https://drive.google.com/file/d/1VWtrY26uGqmu-_4_YPd6h2Rqudn4zAiC/view?usp=sharing" width="100%" height="400" style="border-radius: 20px; border: 2px solid #ffb6c1;" allowfullscreen></iframe>
-      <button class="pdf-fullscreen-btn" id="openPdfFull"><i class="fas fa-expand"></i> Ver a pantalla completa</button>
+  <!-- PDFs (dos, lado a lado) -->
+  <section id="pdfs" class="fade-section">
+    <h2>📄 Nuestros documentos especiales</h2>
+    <div class="pdf-duo">
+      <div class="pdf-container">
+        <iframe src="https://drive.google.com/file/d/1VWtrY26uGqmu-_4_YPd6h2Rqudn4zAiC/preview" width="100%" height="350" style="border-radius: 20px; border: 2px solid #ffb6c1;" allowfullscreen></iframe>
+        <button class="pdf-fullscreen-btn" data-pdf="1VWtrY26uGqmu-_4_YPd6h2Rqudn4zAiC"><i class="fas fa-expand"></i> Ver a pantalla completa</button>
+      </div>
+      <div class="pdf-container">
+        <iframe src="https://drive.google.com/file/d/102SqnAtO7lgKaiTtNxoKRIsSqfcsK4hh/preview" width="100%" height="350" style="border-radius: 20px; border: 2px solid #ffb6c1;" allowfullscreen></iframe>
+        <button class="pdf-fullscreen-btn" data-pdf="102SqnAtO7lgKaiTtNxoKRIsSqfcsK4hh"><i class="fas fa-expand"></i> Ver a pantalla completa</button>
+      </div>
     </div>
   </section>
 
-  <section id="suenos" class="fade-section"><h2>🌈 Nuestros sueños a futuro</h2><p style="background: #ffe4ec; padding: 1.8rem; border-radius: 40px;">Viajar por el mundo, construir nuestro hogar, despertar juntos cada día, y envejecer de la mano.</p></section>
+  <section id="suenos" class="fade-section">
+    <h2>🌈 Nuestros sueños a futuro</h2>
+    <div style="background: #ffe4ec; padding: 2rem; border-radius: 40px; font-size: 1.3rem; line-height: 1.8;">
+      <p>Nuestro sueño es tener nuestra propia casa, un Ford Raptor Ranger, y amarnos por toda la vida… en todas las vidas que tengamos. Porque contigo aprendí que el amor no entiende de distancias ni de tiempos; es simplemente eterno.</p>
+      <p style="margin-top: 20px; font-family: 'Dancing Script', cursive; font-size: 2rem;">Te amo de aquí a la luna, a pasitos de tortuga. 🐢🌙</p>
+    </div>
+  </section>
 
   <section id="canciones" class="fade-section"><h2>🎵 Nuestras canciones favoritas</h2><div class="card-grid" id="cancionesGrid"></div></section>
 
   <section id="tutorial" class="fade-section"><h2>📺 Tutoriales para no pelear</h2><div class="card-grid" id="tutorialGrid"></div></section>
 
-  <section id="zara" class="fade-section"><h2>👶 Para nuestra futura hija Zara</h2><div class="zara-section">Zara, aún no has llegado, pero ya te amamos con locura. Serás la mezcla perfecta de nosotros dos.</div></section>
+  <section id="zara" class="fade-section"><h2>👶 Para nuestra futura hija Zara</h2><div class="zara-section">Zara, aún no has llegado, pero ya te amamos con locura. Serás la mezcla perfecta de nosotros dos. Te esperamos con el corazón lleno de canciones y cuentos.</div></section>
 
-  <section id="recordatorio" class="fade-section"><h2>🔐 Recordatorio: nunca abandonemos</h2><p style="font-size:1.4rem; background:#ffb6c1; padding:25px; border-radius:50px;">Esto es para siempre. Prometo cuidarnos, escucharnos y elegirnos cada día.</p></section>
+  <section id="recordatorio" class="fade-section"><h2>🔐 Recordatorio: nunca abandonemos</h2><p style="font-size:1.4rem; background:#ffb6c1; padding:25px; border-radius:50px; color:#3d1e2a;">Esto es para siempre. Prometo cuidarnos, escucharnos y elegirnos cada día.</p></section>
 
   <section id="final" class="fade-section"><div class="final-message">Algún día no habrá distancia… solo hogar 🏡</div><div style="text-align:right; font-size:1.8rem;">Siempre vuelvo a ti,<br>— Cristhian</div></section>
   <div style="text-align:center; margin-top:30px;">❤️ Cristhian & Thayss · infinito</div>
@@ -306,7 +309,7 @@ Gracias por aceptar a mí y a mis excentricidades. Gracias, porque un poquito de
       sec.appendChild(cont); carouselsDiv.appendChild(sec);
     });
 
-    // ----- LIGHTBOX (delegación) -----
+    // LIGHTBOX (delegación mejorada)
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
     const lightboxClose = document.getElementById('lightboxClose');
@@ -319,7 +322,8 @@ Gracias por aceptar a mí y a mis excentricidades. Gracias, porque un poquito de
     document.body.addEventListener('click', (e) => {
       const img = e.target.closest('img');
       if (!img) return;
-      if (img.closest('.carousel-item') || img.closest('.gallery-item') || img.closest('.favorite-card')) {
+      // Solo imágenes de carruseles o lugares
+      if (img.closest('.carousel-item') || img.closest('.favorite-card')) {
         openLightbox(img.src);
       }
     });
@@ -416,11 +420,12 @@ Gracias por aceptar a mí y a mis excentricidades. Gracias, porque un poquito de
     const cancionesGrid = document.getElementById('cancionesGrid');
     cancionesGrid.appendChild(createYouTubeCard('Perfect - Ed Sheeran', 'https://www.youtube.com/watch?v=2Vv-BfVoq4g'));
     cancionesGrid.appendChild(createYouTubeCard('Amor eterno', 'https://www.youtube.com/watch?v=TKXafcpKp1c'));
-    // ... (puedes agregar más)
+    cancionesGrid.appendChild(createYouTubeCard('Canción romántica 1', 'https://www.youtube.com/watch?v=b3GyAtcoogc'));
+    cancionesGrid.appendChild(createYouTubeCard('Canción romántica 2', 'https://www.youtube.com/watch?v=zLX_GcXt2pI'));
 
     const tutorialGrid = document.getElementById('tutorialGrid');
     tutorialGrid.appendChild(createYouTubeCard('Los 5 lenguajes del amor', 'https://www.youtube.com/watch?v=QF7lVq5JlKI'));
-    tutorialGrid.appendChild(createYouTubeCard('Comunicación en pareja', 'https://youtu.be/urvFYMva28A?si=lA4y0MaX5QUIatjB'));
+    tutorialGrid.appendChild(createYouTubeCard('Comunicación en pareja', 'https://www.youtube.com/watch?v=urvFYMva28A'));
     tutorialGrid.appendChild(createYouTubeCard('Resolver conflictos', 'https://www.youtube.com/watch?v=gbund9eYXIk'));
 
     // Lugares
@@ -437,20 +442,23 @@ Gracias por aceptar a mí y a mis excentricidades. Gracias, porque un poquito de
       lugGrid.appendChild(card);
     });
 
-    // PDF fullscreen
-    document.getElementById('openPdfFull').addEventListener('click', () => {
-      const pdfDiv = document.createElement('div');
-      pdfDiv.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:100000; display:flex; align-items:center; justify-content:center;';
-      const iframe = document.createElement('iframe');
-      iframe.src = 'https://drive.google.com/file/d/1VWtrY26uGqmu-_4_YPd6h2Rqudn4zAiC/preview'; // REEMPLAZA ID
-      iframe.style.cssText = 'width:95%; height:95%; border:none; border-radius:20px;';
-      iframe.allowFullscreen = true;
-      const close = document.createElement('span'); close.innerHTML = '&times;';
-      close.style.cssText = 'position:absolute; top:20px; right:40px; font-size:4rem; color:white; cursor:pointer;';
-      pdfDiv.appendChild(iframe); pdfDiv.appendChild(close);
-      document.body.appendChild(pdfDiv);
-      close.onclick = () => pdfDiv.remove();
-      pdfDiv.onclick = (e) => { if(e.target === pdfDiv) pdfDiv.remove(); };
+    // PDFs fullscreen (usando data-pdf)
+    document.querySelectorAll('.pdf-fullscreen-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const pdfId = e.currentTarget.getAttribute('data-pdf');
+        const pdfDiv = document.createElement('div');
+        pdfDiv.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; background:#000; z-index:100000; display:flex; align-items:center; justify-content:center;';
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://drive.google.com/file/d/${pdfId}/preview`;
+        iframe.style.cssText = 'width:95%; height:95%; border:none; border-radius:20px;';
+        iframe.allowFullscreen = true;
+        const close = document.createElement('span'); close.innerHTML = '&times;';
+        close.style.cssText = 'position:absolute; top:20px; right:40px; font-size:4rem; color:white; cursor:pointer;';
+        pdfDiv.appendChild(iframe); pdfDiv.appendChild(close);
+        document.body.appendChild(pdfDiv);
+        close.onclick = () => pdfDiv.remove();
+        pdfDiv.onclick = (ev) => { if(ev.target === pdfDiv) pdfDiv.remove(); };
+      });
     });
 
     // Audio y música (sin cambios)
