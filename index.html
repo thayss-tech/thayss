@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>🌹 Nuestro refugio · Cristian & Thayss.</title>
   <!-- Favicon corazón -->
-<link rel="icon" type="image/jpeg" href="images/e1.jpg">
+  <link rel="icon" type="image/jpeg" href="images/e1.jpg">
  
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -129,17 +129,41 @@
     .play-btn { background: #ff69b4; color: white; border: none; width: 64px; height: 64px; border-radius: 50%; font-size: 2rem; cursor: pointer; box-shadow: 0 8px 0 #b34e7a; }
     .zara-section { background: #fce4ec; border-radius: 48px; padding: 2rem; }
     .final-message { font-size: 2.8rem; text-align: center; }
-    .lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; z-index: 10000; }
-    .lightbox img { max-width: 90%; max-height: 85vh; border-radius: 32px; border: 4px solid white; }
-    .lightbox-close { position: absolute; top: 30px; right: 40px; font-size: 3rem; color: white; cursor: pointer; }
 
+    /* Lightbox mejorado */
+    .lightbox {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9); backdrop-filter: blur(8px);
+      display: none; align-items: center; justify-content: center;
+      z-index: 10000; cursor: zoom-out;
+    }
+    .lightbox img {
+      max-width: 90%; max-height: 90vh; object-fit: contain;
+      border-radius: 16px; box-shadow: 0 0 40px rgba(255,105,180,0.5);
+      border: 3px solid white; cursor: default;
+    }
+    .lightbox-close {
+      position: absolute; top: 20px; right: 30px; font-size: 3.5rem;
+      color: white; cursor: pointer; opacity: 0.8; z-index: 10001;
+    }
+    .lightbox-close:hover { opacity: 1; transform: scale(1.1); }
 
-.video-card iframe {
-  aspect-ratio: 16 / 9;
-  height: auto;
-  border: none;
-}
+    .video-card iframe {
+      aspect-ratio: 16 / 9;
+      height: auto;
+      border: none;
+    }
     
+    /* Estilos para sección PDF */
+    .pdf-container {
+      background: #fff0f5; border-radius: 30px; padding: 1.5rem; text-align: center;
+    }
+    .pdf-fullscreen-btn {
+      background: #ff69b4; color: white; border: none; padding: 12px 24px;
+      border-radius: 40px; font-size: 1.1rem; margin-top: 15px; cursor: pointer;
+      box-shadow: 0 4px 0 #b34e7a; transition: 0.1s;
+    }
+    .pdf-fullscreen-btn:active { transform: translateY(4px); box-shadow: none; }
   </style>
 </head>
 <body>
@@ -167,8 +191,8 @@
     <a href="#intro">✨ Inicio</a> <a href="#historia">📖 Historia</a> <a href="#galeria">📸 Fotos</a>
     <a href="#cartas">💌 Cartas</a> <a href="#timeline">⏳ Timeline</a> <a href="#videos">🎥 Videos</a>
     <a href="#poemas">✍️ Poemas</a> <a href="#peliculas">🎬 Películas</a> <a href="#lugares">📍 Lugares</a>
-    <a href="#suenos">🌈 Sueños</a> <a href="#canciones">🎵 Canciones</a> <a href="#tutorial">📺 Tutorial</a>
-    <a href="#zara">👶 Zara</a> <a href="#recordatorio">🔐 Recordatorio</a> <a href="#final">🏡 Final</a>
+    <a href="#pdf">📄 PDF</a> <a href="#suenos">🌈 Sueños</a> <a href="#canciones">🎵 Canciones</a>
+    <a href="#tutorial">📺 Tutorial</a> <a href="#zara">👶 Zara</a> <a href="#recordatorio">🔐 Recordatorio</a> <a href="#final">🏡 Final</a>
   </div>
 
   <section id="intro" class="fade-section">
@@ -218,13 +242,24 @@
   <!-- LUGARES con imagen -->
   <section id="lugares" class="fade-section"><h2>📍 Lugares que amamos</h2><div class="card-grid" id="lugaresGrid"></div></section>
 
+  <!-- SECCIÓN PDF (nueva) -->
+  <section id="pdf" class="fade-section">
+    <h2>📄 Nuestro documento especial</h2>
+    <div class="pdf-container">
+      <iframe src="https://drive.google.com/file/d/AQUI_EL_ID_DEL_PDF/preview" 
+              width="100%" height="400" style="border-radius: 20px; border: 2px solid #ffb6c1;" 
+              allowfullscreen></iframe>
+      <button class="pdf-fullscreen-btn" id="openPdfFull"><i class="fas fa-expand"></i> Ver a pantalla completa</button>
+    </div>
+  </section>
+
   <section id="suenos" class="fade-section"><h2>🌈 Nuestros sueños a futuro</h2><p style="background: #ffe4ec; padding: 1.8rem; border-radius: 40px;">Viajar por el mundo, construir nuestro hogar, despertar juntos cada día, y envejecer de la mano.</p></section>
 
   <!-- CANCIONES (YouTube clickeable) -->
   <section id="canciones" class="fade-section"><h2>🎵 Nuestras canciones favoritas</h2><div class="card-grid" id="cancionesGrid"></div></section>
 
-  <!-- TUTORIAL (YouTube clickeable) -->
-  <section id="tutorial" class="fade-section"><h2>📺 Tutoriales para no pelear</h2><div id="tutorialContainer"></div></section>
+  <!-- TUTORIALES (ahora con grid de tarjetas) -->
+  <section id="tutorial" class="fade-section"><h2>📺 Tutoriales para no pelear</h2><div class="card-grid" id="tutorialGrid"></div></section>
 
   <section id="zara" class="fade-section"><h2>👶 Para nuestra futura hija Zara</h2><div class="zara-section">Zara, aún no has llegado, pero ya te amamos con locura. Serás la mezcla perfecta de nosotros dos.</div></section>
 
@@ -289,59 +324,43 @@
       sec.appendChild(cont); carouselsDiv.appendChild(sec);
     });
 
-    // Lightbox
+    // Lightbox mejorado
     const lightbox = document.getElementById('lightbox'), lightboxImg = document.getElementById('lightboxImg');
     document.getElementById('lightboxClose').onclick = () => lightbox.style.display='none';
     lightbox.onclick = e => { if(e.target===lightbox) lightbox.style.display='none'; };
+    window.addEventListener('keydown', (e) => { if(e.key==='Escape') lightbox.style.display='none'; });
 
-    // Videos locales
-    // Lista de videos desde Google Drive
-// REEMPLAZA los IDs con los que obtuviste de Drive
-const videosDrive = [
-  { titulo: 'Video 0', driveId: '1x7UbXri5lVieh99n2-xfcKNfZkDW7Hqo' },
-  { titulo: 'Video 1', driveId: '1c4IbZEarZwTRoI_B0atLqQ293AC8skqV' },
-  { titulo: 'Video 2', driveId: '1ckQHuo3j5pmZ5rb3Pcu6xsvgfQfE1lXJ' },
-  { titulo: 'Video 3', driveId: '185tRzs-Wplr4mYIuUmI-bwtRePp1n1RE' },
-  { titulo: 'Video 4', driveId: '13FcQy7PR6TeDIbgOISoVzD5wEnVvG_VB' },
-  { titulo: 'Video 5', driveId: '1kt0MNA9KPq0yPE_FhSvIiaDEMqANeoh6' },
-  { titulo: 'Video 6', driveId: '19aJNq5hscqV-_VgWvLc8762TpEqzTz5c' },
-  { titulo: 'Video 7', driveId: '1l1v3Lve0pfEtN3-I_sOc_f1BdztARjoc' },
-  { titulo: 'Video 8', driveId: '1bhBhZ0t5pyAvgV3za0CJfe0X16BSNQLZ' },
-  { titulo: 'Video 9', driveId: '1uDomIbj8AiWaCdBSKLjc3HpV2BH61CSV' },
-  { titulo: 'Video 10', driveId: '1NpOVAAM3YJMgsSyKMAA45VUdaPe8QokN' },
-  { titulo: 'Video 11', driveId: '12SjMEGfbe6arhtznv1FxiaFb3C-r_9vR' },
-  { titulo: 'Video 12', driveId: '1m9kcZUVXEcgiD1vFFPCaRJAD_WgG0VIU' },
-  { titulo: 'Video 13', driveId: '1k54InJ7iWRODM1CL-msoiV4jYk5kJCms' },
-  { titulo: 'Video 14', driveId: '1XeBrq-FUGUrho5DfNSL7TD47ysPb28ov' }
-];
+    // Videos desde Drive
+    const videosGrid = document.getElementById('videosGrid');
+    const videosDrive = [
+      { titulo: 'Video 0', driveId: '1x7UbXri5lVieh99n2-xfcKNfZkDW7Hqo' },
+      { titulo: 'Video 1', driveId: '1c4IbZEarZwTRoI_B0atLqQ293AC8skqV' },
+      { titulo: 'Video 2', driveId: '1ckQHuo3j5pmZ5rb3Pcu6xsvgfQfE1lXJ' },
+      { titulo: 'Video 3', driveId: '185tRzs-Wplr4mYIuUmI-bwtRePp1n1RE' },
+      { titulo: 'Video 4', driveId: '13FcQy7PR6TeDIbgOISoVzD5wEnVvG_VB' },
+      { titulo: 'Video 5', driveId: '1kt0MNA9KPq0yPE_FhSvIiaDEMqANeoh6' },
+      { titulo: 'Video 6', driveId: '19aJNq5hscqV-_VgWvLc8762TpEqzTz5c' },
+      { titulo: 'Video 7', driveId: '1l1v3Lve0pfEtN3-I_sOc_f1BdztARjoc' },
+      { titulo: 'Video 8', driveId: '1bhBhZ0t5pyAvgV3za0CJfe0X16BSNQLZ' },
+      { titulo: 'Video 9', driveId: '1uDomIbj8AiWaCdBSKLjc3HpV2BH61CSV' },
+      { titulo: 'Video 10', driveId: '1NpOVAAM3YJMgsSyKMAA45VUdaPe8QokN' },
+      { titulo: 'Video 11', driveId: '12SjMEGfbe6arhtznv1FxiaFb3C-r_9vR' },
+      { titulo: 'Video 12', driveId: '1m9kcZUVXEcgiD1vFFPCaRJAD_WgG0VIU' },
+      { titulo: 'Video 13', driveId: '1k54InJ7iWRODM1CL-msoiV4jYk5kJCms' },
+      { titulo: 'Video 14', driveId: '1XeBrq-FUGUrho5DfNSL7TD47ysPb28ov' }
+    ];
+    videosDrive.forEach(video => {
+      const card = document.createElement('div'); card.className = 'video-card';
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://drive.google.com/file/d/${video.driveId}/preview`;
+      iframe.width = '100%'; iframe.height = '200';
+      iframe.style.borderRadius = '16px'; iframe.allow = 'autoplay; fullscreen'; iframe.allowFullscreen = true;
+      const tituloElem = document.createElement('p');
+      tituloElem.style.marginTop = '8px'; tituloElem.style.fontWeight = '500'; tituloElem.textContent = video.titulo;
+      card.appendChild(iframe); card.appendChild(tituloElem);
+      videosGrid.appendChild(card);
+    });
 
-videosDrive.forEach(video => {
-  const card = document.createElement('div');
-  card.className = 'video-card';
-  
-  // Creamos un iframe con el reproductor de Drive
-  const iframe = document.createElement('iframe');
-  iframe.src = `https://drive.google.com/file/d/${video.driveId}/preview`;
-  iframe.width = '100%';
-  iframe.height = '200';
-  iframe.style.borderRadius = '16px';
-  iframe.allow = 'autoplay; fullscreen';
-  iframe.allowFullscreen = true;
-  
-  const tituloElem = document.createElement('p');
-  tituloElem.style.marginTop = '8px';
-  tituloElem.style.fontWeight = '500';
-  tituloElem.textContent = video.titulo;
-  
-  card.appendChild(iframe);
-  card.appendChild(tituloElem);
-  videosGrid.appendChild(card);
-});
-
-    
-
-
-    
     // TIMELINE ALTERNADA
     const events = [
       { date: '03/04/2024 19:23', desc: '✨ Nos conocimos · el universo conspiró' },
@@ -385,7 +404,7 @@ videosDrive.forEach(video => {
       return card;
     }
 
-    // Películas (URL corregida)
+    // Películas
     const peliGrid = document.getElementById('peliculasGrid');
     peliGrid.appendChild(createYouTubeCard('Si la vida te da mandarinas', 'https://www.youtube.com/watch?v=ShDaILMdRa4'));
     peliGrid.appendChild(createYouTubeCard('Hasta que el cielo nos reúna', 'https://www.youtube.com/watch?v=Jdl0pAuO1tM'));
@@ -406,11 +425,11 @@ videosDrive.forEach(video => {
     cancionesGrid.appendChild(createYouTubeCard('Canción romántica 8', 'https://www.youtube.com/watch?v=nvGzoSZutYk'));
     cancionesGrid.appendChild(createYouTubeCard('Canción romántica 9', 'https://www.youtube.com/watch?v=p4-EgFXfDkc'));
 
-    // Tutorial
-    const tutCont = document.getElementById('tutorialContainer');
-    tutCont.innerHTML = `<p><i class="fas fa-play-circle"></i> “5 lenguajes del amor”</p>`;
-    const tutCard = createYouTubeCard('Los 5 lenguajes del amor', 'https://www.youtube.com/watch?v=QF7lVq5JlKI');
-    tutCont.appendChild(tutCard);
+    // Tutoriales (grid con 3 tarjetas por ahora)
+    const tutorialGrid = document.getElementById('tutorialGrid');
+    tutorialGrid.appendChild(createYouTubeCard('Los 5 lenguajes del amor', 'https://www.youtube.com/watch?v=QF7lVq5JlKI'));
+    tutorialGrid.appendChild(createYouTubeCard('Comunicación en pareja', 'https://www.youtube.com/watch?v=XXXXX')); // Reemplaza con URL real
+    tutorialGrid.appendChild(createYouTubeCard('Cómo resolver conflictos', 'https://www.youtube.com/watch?v=YYYYY')); // Reemplaza con URL real
 
     // Lugares
     const lugares = [
@@ -426,27 +445,39 @@ videosDrive.forEach(video => {
       lugGrid.appendChild(card);
     });
 
-    // ----- AUDIO OCULTO (melodía sintetizada) -----
-    let audioCtx = null;
-    let isPlaying = false;
-    const playBtn = document.getElementById('customPlayBtn');
-    const statusSpan = document.getElementById('audioStatus');
+    // PDF pantalla completa
+    document.getElementById('openPdfFull').addEventListener('click', () => {
+      const pdfLightbox = document.createElement('div');
+      pdfLightbox.style.cssText = 'position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:100000; display:flex; align-items:center; justify-content:center;';
+      const iframe = document.createElement('iframe');
+      iframe.src = 'https://drive.google.com/file/d/AQUI_EL_ID_DEL_PDF/preview'; // REEMPLAZA EL ID
+      iframe.style.cssText = 'width:95%; height:95%; border:none; border-radius:20px;';
+      iframe.allowFullscreen = true;
+      const closeBtn = document.createElement('span');
+      closeBtn.innerHTML = '&times;';
+      closeBtn.style.cssText = 'position:absolute; top:20px; right:40px; font-size:4rem; color:white; cursor:pointer; z-index:100001;';
+      pdfLightbox.appendChild(iframe); pdfLightbox.appendChild(closeBtn);
+      document.body.appendChild(pdfLightbox);
+      closeBtn.addEventListener('click', () => pdfLightbox.remove());
+      pdfLightbox.addEventListener('click', (e) => { if(e.target === pdfLightbox) pdfLightbox.remove(); });
+    });
+
+    // AUDIO OCULTO
+    let audioCtx = null, isPlaying = false;
+    const playBtn = document.getElementById('customPlayBtn'), statusSpan = document.getElementById('audioStatus');
     function playGentleMelody(ctx) {
       const now = ctx.currentTime;
       const notes = [523.25, 659.25, 783.99, 1046.50];
       notes.forEach((freq, i) => {
-        let osc = ctx.createOscillator();
-        let gain = ctx.createGain();
-        osc.type = 'sine';
-        osc.frequency.value = freq;
+        let osc = ctx.createOscillator(); let gain = ctx.createGain();
+        osc.type = 'sine'; osc.frequency.value = freq;
         gain.gain.setValueAtTime(0.08, now + i*0.5);
         gain.gain.exponentialRampToValueAtTime(0.001, now + i*0.5 + 1.2);
         osc.connect(gain).connect(ctx.destination);
-        osc.start(now + i*0.6);
-        osc.stop(now + i*0.6 + 1.5);
+        osc.start(now + i*0.6); osc.stop(now + i*0.6 + 1.5);
       });
       setTimeout(() => {
-        if (audioCtx && isPlaying) { playGentleMelody(audioCtx); }
+        if (audioCtx && isPlaying) playGentleMelody(audioCtx);
         else { isPlaying = false; playBtn.innerHTML = '<i class="fas fa-play"></i>'; statusSpan.textContent = '🎵 listo'; }
       }, 4000);
     }
@@ -454,22 +485,16 @@ videosDrive.forEach(video => {
       if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       if (audioCtx.state === 'suspended') await audioCtx.resume();
       if (!isPlaying) {
-        isPlaying = true;
-        playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-        statusSpan.textContent = '🎶 reproduciendo...';
+        isPlaying = true; playBtn.innerHTML = '<i class="fas fa-pause"></i>'; statusSpan.textContent = '🎶 reproduciendo...';
         playGentleMelody(audioCtx);
       } else {
-        await audioCtx.close();
-        audioCtx = null;
-        isPlaying = false;
-        playBtn.innerHTML = '<i class="fas fa-play"></i>';
-        statusSpan.textContent = '🎵 detenido';
+        await audioCtx.close(); audioCtx = null; isPlaying = false;
+        playBtn.innerHTML = '<i class="fas fa-play"></i>'; statusSpan.textContent = '🎵 detenido';
       }
     });
 
-    // Música de fondo (archivo local)
-    const musicaFondo = new Audio('musica/fondo-romantico.mp3');
-    musicaFondo.loop = true;
+    // Música de fondo
+    const musicaFondo = new Audio('musica/fondo-romantico.mp3'); musicaFondo.loop = true;
     let fondoPlaying = false;
     const musicToggleBtn = document.getElementById('musicToggle');
     musicToggleBtn.addEventListener('click', () => {
