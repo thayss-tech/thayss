@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
   <title>🌹 Nuestro refugio · Cristhian & Thayss</title>
   <!-- Favicon corazón -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23ff69b4' d='M50 85 L15 50 Q0 35 0 20 Q0 5 15 5 Q30 5 50 25 Q70 5 85 5 Q100 5 100 20 Q100 35 85 50 Z'/%3E%3Csvg%3E">
+ <link rel="icon" type="image/svg+xml" 
+href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%23ff69b4' d='M50 85 L15 50 Q0 35 0 20 Q0 5 15 5 Q30 5 50 25 Q70 5 85 5 Q100 5 100 20 Q100 35 85 50 Z'/%3E%3C/svg%3E?v=2">
+  
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -235,24 +237,93 @@
     const heartsC = document.getElementById('heartsContainer');
     for(let i=0;i<22;i++){ let h=document.createElement('div'); h.className='heart-float'; h.innerHTML=['❤️','🌸','✨','💕'][i%4]; h.style.left=Math.random()*100+'%'; h.style.animationDelay=Math.random()*10+'s'; heartsC.appendChild(h); }
 
-    // 10 carruseles de fotos
-    const temas = ['Primer año','Viajes','Citas','Risas','Abrazos','Miradas','Besos','Locuras','Sueños','Nuestro día'];
-    const carouselsDiv = document.getElementById('photoCarousels');
-    temas.forEach(tema => {
-      const sec = document.createElement('div'); sec.className = 'carousel-section';
-      sec.innerHTML = `<div class="carousel-title"><i class="fas fa-heart" style="color:#ff69b4;"></i> ${tema}</div>`;
-      const cont = document.createElement('div'); cont.className = 'carousel-container';
-      for(let i=1;i<=6;i++) {
-        const item = document.createElement('div'); item.className = 'carousel-item';
-        const img = document.createElement('img');
-        img.src = `images/${tema.toLowerCase().replace(/ /g,'')}${i}.png`;
-        img.alt = tema;
-        img.onerror = () => img.src = 'https://picsum.photos/200/200?random='+Math.random();
-        img.addEventListener('click', () => { lightbox.style.display='flex'; lightboxImg.src = img.src; });
-        item.appendChild(img); cont.appendChild(item);
-      }
-      sec.appendChild(cont); carouselsDiv.appendChild(sec);
+
+//FOTOS
+
+const imagenes = {
+  'Fotos Especiales': [
+    'images/e1.jpg',
+    'images/e2.jpg',
+    'images/e3.jpg',
+    'images/e4.jpg',
+    'images/e5.jpg',
+    'images/e6.heic',
+    'images/e7.jpeg',
+    'images/e8.jpeg',
+    'images/e9.jpeg',
+    'images/e10.jpeg',
+    'images/e11.jpeg',
+    'images/e12.jpeg',
+     'images/e13.jpeg',
+    'images/e14.jpeg',
+    // agrega las que quieras
+  ],
+  'Viajes': [
+    'images/viaje1.jpg',
+    'images/viaje2.jpg',
+  ],
+  'Citas': [
+    'images/cita1.jpg',
+    'images/cita2.jpg',
+  ],
+  // sigue con los demás temas...
+};
+
+const carouselsDiv = document.getElementById('photoCarousels');
+
+Object.keys(imagenes).forEach(tema => {
+  const sec = document.createElement('div');
+  sec.className = 'carousel-section';
+
+  sec.innerHTML = `
+    <div class="carousel-title">
+      <i class="fas fa-heart" style="color:#ff69b4;"></i> ${tema}
+    </div>
+  `;
+
+  const cont = document.createElement('div');
+  cont.className = 'carousel-container';
+
+  imagenes[tema].forEach(src => {
+    const item = document.createElement('div');
+    item.className = 'carousel-item';
+
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = tema;
+
+    img.addEventListener('click', () => {
+      lightbox.style.display='flex';
+      lightboxImg.src = img.src;
     });
+
+    item.appendChild(img);
+    cont.appendChild(item);
+  });
+
+  sec.appendChild(cont);
+  carouselsDiv.appendChild(sec);
+});
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+    
 
     // Lightbox
     const lightbox = document.getElementById('lightbox'), lightboxImg = document.getElementById('lightboxImg');
