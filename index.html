@@ -132,6 +132,14 @@
     .lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; align-items: center; justify-content: center; z-index: 10000; }
     .lightbox img { max-width: 90%; max-height: 85vh; border-radius: 32px; border: 4px solid white; }
     .lightbox-close { position: absolute; top: 30px; right: 40px; font-size: 3rem; color: white; cursor: pointer; }
+
+
+.video-card iframe {
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border: none;
+}
+    
   </style>
 </head>
 <body>
@@ -287,14 +295,53 @@
     lightbox.onclick = e => { if(e.target===lightbox) lightbox.style.display='none'; };
 
     // Videos locales
-    const videosGrid = document.getElementById('videosGrid');
-    const videoFiles = ['recuerdo1.mp4','mensaje.mp4','viaje.mp4']; // Puedes cambiarlos
-    videoFiles.forEach(file => {
-      const card = document.createElement('div'); card.className = 'video-card';
-      card.innerHTML = `<video controls src="videos/${file}"></video><p style="margin-top:8px;">${file}</p>`;
-      videosGrid.appendChild(card);
-    });
+    // Lista de videos desde Google Drive
+// REEMPLAZA los IDs con los que obtuviste de Drive
+const videosDrive = [
+  { titulo: 'Video 0', driveId: '1x7UbXri5lVieh99n2-xfcKNfZkDW7Hqo' },
+  { titulo: 'Video 1', driveId: '1c4IbZEarZwTRoI_B0atLqQ293AC8skqV' },
+  { titulo: 'Video 2', driveId: '1ckQHuo3j5pmZ5rb3Pcu6xsvgfQfE1lXJ' },
+  { titulo: 'Video 3', driveId: '185tRzs-Wplr4mYIuUmI-bwtRePp1n1RE' },
+  { titulo: 'Video 4', driveId: '13FcQy7PR6TeDIbgOISoVzD5wEnVvG_VB' },
+  { titulo: 'Video 5', driveId: '1kt0MNA9KPq0yPE_FhSvIiaDEMqANeoh6' },
+  { titulo: 'Video 6', driveId: '19aJNq5hscqV-_VgWvLc8762TpEqzTz5c' },
+  { titulo: 'Video 7', driveId: '1l1v3Lve0pfEtN3-I_sOc_f1BdztARjoc' },
+  { titulo: 'Video 8', driveId: '1bhBhZ0t5pyAvgV3za0CJfe0X16BSNQLZ' },
+  { titulo: 'Video 9', driveId: '1uDomIbj8AiWaCdBSKLjc3HpV2BH61CSV' },
+  { titulo: 'Video 10', driveId: '1NpOVAAM3YJMgsSyKMAA45VUdaPe8QokN' },
+  { titulo: 'Video 11', driveId: '12SjMEGfbe6arhtznv1FxiaFb3C-r_9vR' },
+  { titulo: 'Video 12', driveId: '1m9kcZUVXEcgiD1vFFPCaRJAD_WgG0VIU' },
+  { titulo: 'Video 13', driveId: '1k54InJ7iWRODM1CL-msoiV4jYk5kJCms' },
+  { titulo: 'Video 14', driveId: '1XeBrq-FUGUrho5DfNSL7TD47ysPb28ov' }
+];
 
+videosDrive.forEach(video => {
+  const card = document.createElement('div');
+  card.className = 'video-card';
+  
+  // Creamos un iframe con el reproductor de Drive
+  const iframe = document.createElement('iframe');
+  iframe.src = `https://drive.google.com/file/d/${video.driveId}/preview`;
+  iframe.width = '100%';
+  iframe.height = '200';
+  iframe.style.borderRadius = '16px';
+  iframe.allow = 'autoplay; fullscreen';
+  iframe.allowFullscreen = true;
+  
+  const tituloElem = document.createElement('p');
+  tituloElem.style.marginTop = '8px';
+  tituloElem.style.fontWeight = '500';
+  tituloElem.textContent = video.titulo;
+  
+  card.appendChild(iframe);
+  card.appendChild(tituloElem);
+  videosGrid.appendChild(card);
+});
+
+    
+
+
+    
     // TIMELINE ALTERNADA
     const events = [
       { date: '03/04/2024 19:23', desc: '✨ Nos conocimos · el universo conspiró' },
