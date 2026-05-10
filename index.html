@@ -249,6 +249,11 @@
         <button class="pdf-fullscreen-btn" data-pdf="102SqnAtO7lgKaiTtNxoKRIsSqfcsK4hh"><i class="fas fa-expand"></i> Ver a pantalla completa</button>
       </div>
     </div>
+    <!-- NUEVO PDF AGREGADO -->
+    <div class="pdf-container" style="margin-top: 20px;">
+      <iframe src="https://drive.google.com/file/d/1e9L9FY5cijFH4dOxKetlJnfAdONhJEUk/preview" width="100%" height="350" style="border-radius: 20px; border: 2px solid #ffb6c1;" allowfullscreen></iframe>
+      <button class="pdf-fullscreen-btn" data-pdf="1e9L9FY5cijFH4dOxKetlJnfAdONhJEUk"><i class="fas fa-expand"></i> Ver a pantalla completa</button>
+    </div>
   </section>
 
   <section id="suenos" class="fade-section">
@@ -363,7 +368,8 @@
       { titulo: 'Video 11', driveId: '12SjMEGfbe6arhtznv1FxiaFb3C-r_9vR' },
       { titulo: 'Video 12', driveId: '1m9kcZUVXEcgiD1vFFPCaRJAD_WgG0VIU' },
       { titulo: 'Video 13', driveId: '1k54InJ7iWRODM1CL-msoiV4jYk5kJCms' },
-      { titulo: 'Video 14', driveId: '1XeBrq-FUGUrho5DfNSL7TD47ysPb28ov' }
+      { titulo: 'Video 14', driveId: '1XeBrq-FUGUrho5DfNSL7TD47ysPb28ov' },
+      { titulo: 'Video 15', driveId: '1jymrtnfRsoAk5i_RcUzy2v0FzYCSqGy3' }  // NUEVO VIDEO 15
     ];
     videosDrive.forEach(video => {
       const card = document.createElement('div'); card.className = 'video-card';
@@ -388,7 +394,7 @@
       { date: '30/07/2025', desc: '💍 Nos casamos · para siempre' },
       { date: 'Meses viviendo juntos', desc: '🏠 Nuestro pequeño mundo' },
       { date: '09/03 16:00', desc: '😢 Despedida · pero el amor sigue' },
-      { date: 'Presente', desc: '📡 Amor a distancia · más fuerte que nunca' }
+      { date: 'Presente', desc: '📡 Nosotros en Vilcabamba, juntos' }
     ];
     const tl = document.getElementById('timelineAlt');
     events.forEach((ev, i) => {
@@ -428,6 +434,11 @@
     cancionesGrid.appendChild(createYouTubeCard('Canción romántica 1', 'https://www.youtube.com/watch?v=b3GyAtcoogc'));
     cancionesGrid.appendChild(createYouTubeCard('Canción romántica 2', 'https://www.youtube.com/watch?v=zLX_GcXt2pI'));
 
+    // NUEVAS CANCIONES AGREGADAS
+    cancionesGrid.appendChild(createYouTubeCard('Canción romántica 3', 'https://www.youtube.com/watch?v=ZedggMa4Vx4'));
+    cancionesGrid.appendChild(createYouTubeCard('Canción romántica 4', 'https://www.youtube.com/watch?v=FBScYYaoeRc'));
+    cancionesGrid.appendChild(createYouTubeCard('Canción romántica 5', 'https://www.youtube.com/watch?v=WQv8kLuNT2g'));
+
     const tutorialGrid = document.getElementById('tutorialGrid');
     tutorialGrid.appendChild(createYouTubeCard('Los 5 lenguajes del amor', 'https://www.youtube.com/watch?v=QF7lVq5JlKI'));
     tutorialGrid.appendChild(createYouTubeCard('Comunicación en pareja', 'https://www.youtube.com/watch?v=urvFYMva28A'));
@@ -447,7 +458,7 @@
       lugGrid.appendChild(card);
     });
 
-    // PDFs fullscreen (usando data-pdf)
+    // PDFs fullscreen (usando data-pdf) - se aplica a todos los botones con la clase
     document.querySelectorAll('.pdf-fullscreen-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
         const pdfId = e.currentTarget.getAttribute('data-pdf');
